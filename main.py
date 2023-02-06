@@ -13,9 +13,8 @@ def paper(doi1, doi2, page):
         pv.image2mp4()
         # stream 방식으로도 함 해봐야하나 똑같은건가..
         return send_file(f'./result_{pv.file_name}/{pv.file_name}{page}.mp4', f'{pv.file_name}{page}.mp4', as_attachment=True)
-
-    except:
-        return 'something went wrong'
+    except Exception as e:
+        return e
 
 
 @app.route('/')

@@ -23,6 +23,8 @@ class paper_viewer:
             print('download error')
     
     def pdf2image(self):
+        if f'{self.file_name}{self.page}.jpg' in os.popen('ls pdf').read():
+            return
         pages = convert_from_path(f"pdf/{self.file_name}.pdf")
         # self.num_page=len(pages)
         page.save(f"./pdf/{self.file_name}{str(self.page)}.jpg", "JPEG")
