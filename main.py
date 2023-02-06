@@ -3,9 +3,10 @@ import paper_viewer
 
 app = Flask(__name__)
 
-@app.route('/paper/<doi>/<page>')
+@app.route('/paper/<doi1>/<doi2>/<page>')
 def paper():
     try:
+        doi=doi1+'/'+doi2
         pv=paper_viewer(doi)
         pv.download_pdf()
         pv.pdf2image()
