@@ -29,7 +29,7 @@ class paper_viewer:
 	        page.save(f"./pdf/{self.file_name}{str(i)}.jpg", "JPEG")
         
     def image2mp4(self):
-        if result_{self.file_name} in os.popen('ls'):
+        if f'result_{self.file_name}' in os.popen('ls'):
             pass
         else
             os.system(f'mkdir result_{self.file_name}')
