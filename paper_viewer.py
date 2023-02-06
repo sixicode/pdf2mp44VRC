@@ -15,10 +15,12 @@ class paper_viewer:
     def download_pdf(self):
         try:
             file_list=os.popen('ls pdf')
-            if f'{self.file_name}.pdf' in file_list:
-                return
+            print(file_list)
+            print(f'{self.file_name}.pdf')
+            # if f'{self.file_name}.pdf' in file_list:
+                # return
             # print(f'scihub -s {self.doi}')
-            os.system(f'scihub -s {self.doi}')
+            # os.system(f'scihub -s {self.doi}')
         except:
             print('download error')
     
