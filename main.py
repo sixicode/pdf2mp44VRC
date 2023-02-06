@@ -7,8 +7,7 @@ app = Flask(__name__)
 def paper(doi1, doi2, page):
     # try:
     doi=f'{doi1}/{doi2}'
-    print(doi)
-    pv=paper_viewer(doi)
+    pv=paper_viewer.paper_viewer(doi)
     print('debug-1')
     pv.download_pdf()
     print('debug-2')
