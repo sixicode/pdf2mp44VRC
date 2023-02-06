@@ -4,7 +4,7 @@ import paper_viewer
 app = Flask(__name__)
 
 @app.route('/paper/<doi1>/<doi2>/<page>')
-def paper(doi1, doi2):
+def paper(doi1, doi2, page):
     try:
         doi=doi1+'/'+doi2
         pv=paper_viewer(doi)
