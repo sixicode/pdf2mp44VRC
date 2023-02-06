@@ -30,9 +30,13 @@ class paper_viewer():
         # encoder(for mp4)
         fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
         # output file name, encoder, fps, size(fit to image size)
+        
+
         for i in range(self.num_page):
-            video = cv2.VideoWriter(f'{self.file_name}{i}.mp4',fourcc, 20.0, (1240, 1360))
             img = cv2.imread(f'./pdf/{self.file_name}{i}.png')
+            height, width, layers = img.shape
+            size = (width, height)
+            video = cv2.VideoWriter(f'{self.file_name}{i}.mp4',fourcc, 5.0, size)
             video.write(img)
             video.release()
 
@@ -40,6 +44,6 @@ class paper_viewer():
 
 doi='10.1126/science.1186799'
 dl=paper_viewer(doi)
-# dl.download_pdf()
+dl.download_pdf()
 dl.pdf2image()
 dl.image2mp4()
