@@ -5,7 +5,6 @@ import cv2
 class paper_viewer:
     def __init__(self, doi):
         self.doi=doi
-        pass
 
     # def get_available_url(self):
     #     res=os.popen('scihub -c')
