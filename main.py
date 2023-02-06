@@ -11,7 +11,7 @@ def paper(doi1, doi2, page):
         pv.download_pdf()
         pv.pdf2image()
         pv.image2mp4()
-        return send_file(f'./result_{pv.file_name}/{pv.file_name}{page}.mp4', mimetype='video/mp4', f'{pv.file_name}{page}.mp4', as_attachment=True)
+        return send_file(f'./result_{pv.file_name}/{pv.file_name}{page}.mp4', mimetype='video/mp4', attachment_filename=f'{pv.file_name}{page}.mp4', as_attachment=True)
     except:
         return 'something went wrong'
 
