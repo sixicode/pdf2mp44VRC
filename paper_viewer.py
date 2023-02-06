@@ -15,12 +15,10 @@ class paper_viewer:
     def download_pdf(self):
         try:
             file_list=os.popen('ls pdf').read()
-            print(file_list)
-            print(f'{self.file_name}.pdf')
-            # if f'{self.file_name}.pdf' in file_list:
-                # return
+            if f'{self.file_name}.pdf' in file_list:
+                return
             # print(f'scihub -s {self.doi}')
-            # os.system(f'scihub -s {self.doi}')
+            os.system(f'scihub -s {self.doi}')
         except:
             print('download error')
     
@@ -31,7 +29,7 @@ class paper_viewer:
 	        page.save(f"./pdf/{self.file_name}{str(i)}.jpg", "JPEG")
         
     def image2mp4(self):
-        if f'result_{self.file_name}' in os.popen('ls'):
+        if f'result_{self.file_name}' in os.popen('ls').read():
             pass
         else:
             os.system(f'mkdir result_{self.file_name}')
@@ -41,7 +39,7 @@ class paper_viewer:
         # output file name, encoder, fps, size(fit to image size)
         
         for i in range(self.num_page):
-            if f'result_{self.file_name}/{self.file_name}{i}.mp4' in os.popen(f'ls result_{self.file_name}'):
+            if f'result_{self.file_name}/{self.file_name}{i}.mp4' in os.popen(f'ls result_{self.file_name}').read():
                 continue
             img = cv2.imread(f'./pdf/{self.file_name}{i}.jpg')
             height, width, layers = img.shape
