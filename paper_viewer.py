@@ -31,7 +31,7 @@ class paper_viewer:
     def image2mp4(self):
         if f'result_{self.file_name}' in os.popen('ls'):
             pass
-        else
+        else:
             os.system(f'mkdir result_{self.file_name}')
 
         # encoder(for mp4)
