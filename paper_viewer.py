@@ -31,7 +31,7 @@ class paper_viewer():
         fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
         # output file name, encoder, fps, size(fit to image size)
         for i in range(self.num_page):
-            video = cv2.VideoWriter(f'{file_name}{i}.mp4',fourcc, 20.0, (1240, 1360))
+            video = cv2.VideoWriter(f'{self.file_name}{i}.mp4',fourcc, 20.0, (1240, 1360))
             img = cv2.imread(f'./pdf/{self.file_name}{i}.png')
             video.write(img)
             video.release()
