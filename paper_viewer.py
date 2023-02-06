@@ -24,7 +24,7 @@ class paper_viewer():
         pages = convert_from_path(f"pdf/{self.file_name}.pdf")
         self.num_page=len(pages)
         for i, page in enumerate(pages):
-	        page.save(f"./pdf/{self.file_name+str(i)}.jpg", "JPEG")
+	        page.save(f"./pdf/{self.file_name}{str(i)}.jpg", "JPEG")
         
     def image2mp4(self):
         # encoder(for mp4)
@@ -33,7 +33,7 @@ class paper_viewer():
         
 
         for i in range(self.num_page):
-            img = cv2.imread(f'./pdf/{self.file_name}{i}.png')
+            img = cv2.imread(f'./pdf/{self.file_name}{i}.jpg')
             height, width, layers = img.shape
             size = (width, height)
             video = cv2.VideoWriter(f'{self.file_name}{i}.mp4',fourcc, 5.0, size)
