@@ -3,10 +3,10 @@ import os
 import cv2
 
 class paper_viewer:
-    def __init__(self, doi):
+    def __init__(self, doi, page):
         self.doi=doi
         self.file_name=((self.doi).split('/')[1]).replace('/', '.', 2)
-
+        self.page=page
     # def get_available_url(self):
     #     res=os.popen('scihub -c')
     #     self.url_scihub=res[0]
@@ -24,9 +24,11 @@ class paper_viewer:
     
     def pdf2image(self):
         pages = convert_from_path(f"pdf/{self.file_name}.pdf")
-        self.num_page=len(pages)
+        # self.num_page=len(pages)
+        page.save(f"./pdf/{self.file_name}{str(self.page)}.jpg", "JPEG")
         for i, page in enumerate(pages):
-	        page.save(f"./pdf/{self.file_name}{str(i)}.jpg", "JPEG")
+            if i==self.page:
+	            page.save(f"./pdf/{self.file_name}{str(i)}.jpg", "JPEG")
         
     def image2mp4(self):
         if f'result_{self.file_name}' in os.popen('ls').read():
@@ -34,17 +36,14 @@ class paper_viewer:
         else:
             os.system(f'mkdir result_{self.file_name}')
 
-        # encoder(for mp4)
-        fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
-        # output file name, encoder, fps, size(fit to image size)
-        
-        for i in range(self.num_page):
-            if f'result_{self.file_name}/{self.file_name}{i}.mp4' in os.popen(f'ls result_{self.file_name}').read():
-                continue
-            img = cv2.imread(f'./pdf/{self.file_name}{i}.jpg')
+        if f'result_{self.file_name}/{self.file_name}{self.page}.mp4' in os.popen(f'ls result_{self.file_name}').read():
+            return
+        else:
+            fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
+            img = cv2.imread(f'./pdf/{self.file_name}{self.page}.jpg')
             height, width, layers = img.shape
             size = (width, height)
-            video = cv2.VideoWriter(f'result_{self.file_name}/{self.file_name}{i}.mp4',fourcc, 5.0, size)
+            video = cv2.VideoWriter(f'result_{self.file_name}/{self.file_name}{self.page}.mp4',fourcc, 5.0, size)
             for i in range(30):
                 video.write(img)
             video.release()
