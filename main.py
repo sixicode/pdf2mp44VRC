@@ -3,7 +3,7 @@ import paper_viewer
 
 app = Flask(__name__)
 
-@app.route('/paper/<doi>/<page>', methods=['GET'])
+@app.route('/paper/<doi>/<page>')
 def paper():
     try:
         pv=paper_viewer(doi)
@@ -15,7 +15,7 @@ def paper():
         return 'something went wrong'
 
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def home():
     return 'There is nothing here...'
 
