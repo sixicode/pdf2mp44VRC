@@ -2,7 +2,7 @@ from pdf2image import convert_from_path
 import os
 import cv2
 
-class paper_viewer():
+class paper_viewer:
     def __init__(self, doi):
         self.doi=doi
         pass
