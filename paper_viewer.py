@@ -3,8 +3,8 @@ import os
 import cv2
 
 class paper_viewer:
-    def __init__(self, doii):
-        self.doi=doii
+    def __init__(self, doi):
+        self.doi=doi
 
     # def get_available_url(self):
     #     res=os.popen('scihub -c')
