@@ -4,6 +4,7 @@ import paper_viewer
 app = Flask(__name__)
 
 @app.route('/paper/<doi>/<page>', methods=['GET'])
+def paper():
     try:
         pv=paper_viewer(doi)
         pv.download_pdf()
