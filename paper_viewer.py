@@ -45,6 +45,6 @@ class paper_viewer:
             height, width, layers = img.shape
             size = (width, height)
             video = cv2.VideoWriter(f'result_{self.file_name}/{self.file_name}{i}.mp4',fourcc, 5.0, size)
-            for i in range(10):
+            for i in range(30):
                 video.write(img)
             video.release()
