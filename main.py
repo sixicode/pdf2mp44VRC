@@ -1,10 +1,17 @@
-from flask import Flask
-import downloader as dl
+from flask import Flask, send_file
+import paper_viewer
 
 app = Flask(__name__)
 
-@app.route('/paper/<doi>', methods=['GET'])
-    num=int(doi)
+@app.route('/paper/<doi>/<page>', methods=['GET'])
+    try:
+        pv=paper_viewer(doi)
+        pv.download_pdf()
+        pv.pdf2image()
+        pv.image2mp4()
+        return send_file(f'./result_{pv.file_name}/{pv.file_name}{page}.mp4', f'{pv.file_name}{page}.mp4', as_attachment=True)
+    except:
+        return 'something went wrong'
 
 
 @app.route('/', methods=['GET'])

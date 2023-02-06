@@ -41,11 +41,3 @@ class paper_viewer():
             for i in range(10):
                 video.write(img)
             video.release()
-
-
-
-doi='10.1126/science.1186799'
-dl=paper_viewer(doi)
-dl.download_pdf()
-dl.pdf2image()
-dl.image2mp4()
