@@ -28,7 +28,7 @@ class paper_viewer:
             return
         pages = convert_from_path(f"pdf/{self.file_name}.pdf")
         # self.num_page=len(pages)
-        page.save(f"./pdf/{self.file_name}{str(self.page)}.jpg", "JPEG")
+        # page.save(f"./pdf/{self.file_name}{str(self.page)}.jpg", "JPEG")
         for i, page in enumerate(pages):
             if i==self.page:
 	            page.save(f"./pdf/{self.file_name}{str(i)}.jpg", "JPEG")
