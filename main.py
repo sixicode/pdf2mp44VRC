@@ -6,6 +6,9 @@ app = Flask(__name__)
 @app.route('/paper/<doi1>/<doi2>/<page>')
 def paper(doi1, doi2, page):
     try:
+        print(doi1)
+        print(doi2)
+        print(page)
         doi=f'{doi1}/{doi2}'
         pv=paper_viewer.paper_viewer(doi, page)
         pv.download_pdf()
