@@ -53,8 +53,8 @@ class paper_viewer:
             video = cv2.VideoWriter(f'result_{self.file_name}/{self.file_name}{self.page}.mp4',fourcc, 5.0, size)
             # num_img=int(height/(height_video/2))-1
             # for i in range(num_img):
-            print('size = ' + size)
-            print('video size = ' + width+' ' + height_video)
+            print('size = ' + str(size))
+            print('video size = ' + str(width) +' ' + str(height_video))
             i=0
             while (i+1)*int(height_video/2)<height:
                 if i*int(height_video/2)+height_video>height:
