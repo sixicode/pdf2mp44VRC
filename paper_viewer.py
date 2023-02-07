@@ -3,10 +3,12 @@ import os
 import cv2
 
 class paper_viewer:
-    def __init__(self, doi, page):
-        self.doi=doi
-        self.file_name=((self.doi).split('/')[1]).replace('/', '.', 2)
-        self.page=page
+    def __init__(self, doi1, doi2, page):
+        self.doi1=doi1
+        self.doi2=doi2
+        # self.file_name=((self.doi).split('/')[1]).replace('/', '.', 2)
+        self.file_name=doi2
+        self.page=int(page)
     # def get_available_url(self):
     #     res=os.popen('scihub -c')
     #     self.url_scihub=res[0]
