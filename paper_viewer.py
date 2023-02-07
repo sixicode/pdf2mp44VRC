@@ -53,7 +53,7 @@ class paper_viewer:
                 if i*int(height_video/2)+height_video>height:
                     partial_img=img[0:width, height-height_video:height]
                 else:
-                    partial_img=img[0:width, (i)*int(height_video/2):+height_video]
+                    partial_img=img[0:width, (i)*int(height_video/2):(i)*int(height_video/2)+height_video]
                 for j in range(5):
                     video.write(partial_img)
             video.release()
