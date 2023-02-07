@@ -44,8 +44,15 @@ class paper_viewer:
             fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
             img = cv2.imread(f'./pdf/{self.file_name}{self.page}.jpg')
             height, width, layers = img.shape
-            size = (width, height)
+            wh_ratio=1.777
+            size = (width, width/wh_ratio)
             video = cv2.VideoWriter(f'result_{self.file_name}/{self.file_name}{self.page}.mp4',fourcc, 5.0, size)
-            for i in range(30):
-                video.write(img)
+            num_img=int(height/(width/wh_ratio)*2)+1
+            for i in range(num_img):
+                if i*(width/wh_ratio/2)+(width/wh_ratio)>height:
+                    partial_img=img[0:width, height-(width/wh_ratio):height]
+                else:
+                    partial_img=img[0:width, (i)*(width/wh_ratio/2):+(width/wh_ratio)]
+                for j in range(5):
+                    video.write(partial_img)
             video.release()
