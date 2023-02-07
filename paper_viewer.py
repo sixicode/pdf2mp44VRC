@@ -48,12 +48,15 @@ class paper_viewer:
             height_video=int(width/wh_ratio)
             size = (width, height_video)
             video = cv2.VideoWriter(f'result_{self.file_name}/{self.file_name}{self.page}.mp4',fourcc, 5.0, size)
-            num_img=int(height/(height_video)*2)+1
-            for i in range(num_img):
+            # num_img=int(height/(height_video/2))-1
+            # for i in range(num_img):
+            i=0
+            while (i+1)*int(height_video/2)<height:
                 if i*int(height_video/2)+height_video>height:
                     partial_img=img[0:width, height-height_video:height]
                 else:
                     partial_img=img[0:width, (i)*int(height_video/2):(i)*int(height_video/2)+height_video]
                 for j in range(5):
                     video.write(partial_img)
+                i=i+1
             video.release()
