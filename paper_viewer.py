@@ -54,11 +54,11 @@ class paper_viewer:
             # num_img=int(height/(height_video/2))-1
             # for i in range(num_img):
             i=0
-            while (i+1)*int(height_video/2)<height:
-                if i*int(height_video/2)+height_video>height:
+            while (i+1)*int(height_video/20)<height:
+                if i*int(height_video/20)+height_video>height:
                     partial_img=img[height-height_video:height, 0:width]
                 else:
-                    partial_img=img[(i)*int(height_video/2):(i)*int(height_video/2)+height_video, 0:width]
+                    partial_img=img[(i)*int(height_video/20):(i)*int(height_video/20)+height_video, 0:width]
                 for j in range(5):
                     video.write(partial_img)
                 i=i+1
