@@ -19,8 +19,9 @@ class paper_viewer:
                 return
             # print(f'scihub -s {self.doi}')
             os.system(f'scihub -s {self.doi}')
-        except:
+        except Exception as e:
             print('download error')
+            print(e)
     
     def pdf2image(self):
         if f'{self.file_name}{self.page}.jpg' in os.popen('ls pdf').read():
