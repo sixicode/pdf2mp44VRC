@@ -27,13 +27,18 @@ class paper_viewer:
     
     def pdf2image(self):
         if f'{self.file_name}{self.page}.jpg' in os.popen('ls pdf').read():
-            return
+            return True
         pages = convert_from_path(f"pdf/{self.file_name}.pdf")
-        # self.num_page=len(pages)
+        self.num_page=len(pages)
         # page.save(f"./pdf/{self.file_name}{str(self.page)}.jpg", "JPEG")
+        if self.page>self.num_page:
+            return False
+
         for i, page in enumerate(pages):
             if i==self.page:
 	            page.save(f"./pdf/{self.file_name}{str(i)}.jpg", "JPEG")
+                return True
+        return False
         
     def image2mp4(self):
         if f'result_{self.file_name}' in os.popen('ls').read():

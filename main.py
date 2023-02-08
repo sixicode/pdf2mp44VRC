@@ -8,7 +8,8 @@ def paper(doi1, doi2, page):
     try:
         pv=paper_viewer.paper_viewer(doi1, doi2, page)
         pv.download_pdf()
-        pv.pdf2image()
+        if not pv.pdf2image():
+            return send_file(f'./result_{pv.file_name}/{pv.file_name}{pv.num_page-1}.mp4', f'{pv.file_name}{num_page-1}.mp4', as_attachment=True)
         pv.image2mp4()
         return send_file(f'./result_{pv.file_name}/{pv.file_name}{page}.mp4', f'{pv.file_name}{page}.mp4', as_attachment=True)
     except Exception as e:
